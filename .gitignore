@@ -1,0 +1,6 @@
+.flake8
+*.bak
+*.pyc
+__pycache__
+.vscode
+.DS_Store*
