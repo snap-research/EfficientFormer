@@ -1,6 +1,6 @@
 ## EfficientFormer<br><sub>Vision Transformers at MobileNet Speed</sub>
 
-[arXiv](https://github.com/snap-research/EfficientFormer) 
+[arXiv](https://arxiv.org/abs/2206.01191) 
 
 
 <p align="center">
@@ -10,7 +10,7 @@
 
 
 
->[EfficientFormer: Vision Transformers at MobileNet Speed](https://github.com/snap-research/EfficientFormer)<br>
+>[EfficientFormer: Vision Transformers at MobileNet Speed](https://arxiv.org/abs/2206.01191)<br>
 >[Yanyu Li](https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=XUj8koUAAAAJ&sortby=pubdate)<sup>1,2</sup>, [Genge Yuan](https://scholar.google.com/citations?user=tBIAgtgAAAAJ&hl)<sup>1,2</sup>, [Yang Wen](https://www.linkedin.com/in/yang-wen-76749924/)<sup>1</sup>, [Eric Hu](https://www.linkedin.com/in/erichuju/)<sup>1</sup>, [Georgios Evangelidis](https://sites.google.com/site/georgeevangelidis/)<sup>1</sup>, <br>[Sergey Tulyakov](http://www.stulyakov.com/)<sup>1</sup>, [Yanzhi Wang](https://coe.northeastern.edu/people/wang-yanzhi/)<sup>2</sup>, [Jian Ren](https://alanspike.github.io/)<sup>1</sup>  
 ><sup>1</sup>Snap Inc., <sup>2</sup>Northeastern University
 
@@ -24,7 +24,7 @@
 
 
 <br>
-Code comming soon.
+Code coming soon.
 
 
 
@@ -48,11 +48,12 @@ The latency reported is based on the open-source [CoreMLTools](https://github.co
 
 ## Citation
 
-If our code or models help your work, please cite our [paper](https://github.com/snap-research/EfficientFormer):
+If our code or models help your work, please cite our [paper](https://arxiv.org/abs/2206.01191):
 ```BibTeX
 @article{li2022efficientformer,
   title={EfficientFormer: Vision Transformers at MobileNet Speed},
   author={Li, Yanyu and Yuan, Geng and Wen, Yang and Hu, Eric and Evangelidis, Georgios and Tulyakov, Sergey and Wang, Yanzhi and Ren, Jian},
+  journal={arXiv preprint arXiv:2206.01191},
   year={2022}
 }
 ```
