@@ -1,6 +1,4 @@
-.flake8
-*.bak
-*.pyc
+efficientvit_l3_300d/
 __pycache__
+*.pyc
 .vscode
-.DS_Store*
