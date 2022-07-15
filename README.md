@@ -52,6 +52,15 @@ The latency reported is based on the open-source [CoreMLTools](https://github.co
 
 
 ## ImageNet  
+
+### Prerequisites
+`conda` virtual environment is recommended. 
+```
+conda install pytorch torchvision cudatoolkit=11.3 -c pytorch
+pip install timm
+pip install submitit
+```
+
 ### Data preparation
 
 Download and extract ImageNet train and val images from http://image-net.org/. The training and validation data are expected to be in the `train` folder and `val` folder respectively:
