@@ -76,6 +76,17 @@ def transform(model):
     onnx.save_model(onnx_model, model)
 
 def pth_to_onnx(filename, num_classes, outputname):
+    print("Loading Model")
+
+    ckpt = torch.load(filename, map_location=torch.device('cpu'))
+    
+    if 'state_dict' in ckpt:
+        model_dict = ckpt['state_dict']
+    elif 'model' in ckpt:
+        model_dict = ckpt['model']
+    else:
+        model_dict = ckpt
+    
     SnapML_model = SnapML_efficientformer_l1(num_classes=num_classes)
 
     model_dict["network.6.4.token_mixer.q.weight"] = model_dict["network.6.4.token_mixer.q.weight"].unsqueeze(-1).unsqueeze(-1)
@@ -133,16 +144,6 @@ if __name__ == "__main__":
                         help='Number of classes.', type=int, default=1000)
 
     args = parser.parse_args()
-    print("Loading Model")
-
-    ckpt = torch.load(args.model, map_location=torch.device('cpu'))
-    
-    if 'state_dict' in ckpt:
-        model_dict = ckpt['state_dict']
-    elif 'model' in ckpt:
-        model_dict = ckpt['model']
-    else:
-        model_dict = ckpt
 
     pth_to_onnx(args.model, args.classes, args.output)
     
