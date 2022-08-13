@@ -16,14 +16,10 @@ from timm.models.layers.helpers import to_2tuple
 
 EfficientFormer_width = {
     'l1': [48, 96, 224, 384],
-    'l3': [64, 128, 320, 512],
-    'l7': [96, 192, 384, 768],
 }
 
 EfficientFormer_depth = {
     'l1': [3, 2, 6, 4],
-    'l3': [4, 4, 12, 6],
-    'l7': [6, 6, 18, 8],
 }
 
 def _cfg(url='', **kwargs):
@@ -601,30 +597,6 @@ def efficientformer_l1(pretrained=False, **kwargs):
         embed_dims=EfficientFormer_width['l1'],
         downsamples=[True, True, True, True],
         vit_num=1,
-        **kwargs)
-    model.default_cfg = _cfg(crop_pct=0.9)
-    return model
-
-
-@register_model
-def efficientformer_l3(pretrained=False, **kwargs):
-    model = EfficientFormer(
-        layers=EfficientFormer_depth['l3'],
-        embed_dims=EfficientFormer_width['l3'],
-        downsamples=[True, True, True, True],
-        vit_num=4,
-        **kwargs)
-    model.default_cfg = _cfg(crop_pct=0.9)
-    return model
-
-
-@register_model
-def efficientformer_l7(pretrained=False, **kwargs):
-    model = EfficientFormer(
-        layers=EfficientFormer_depth['l7'],
-        embed_dims=EfficientFormer_width['l7'],
-        downsamples=[True, True, True, True],
-        vit_num=8,
         **kwargs)
     model.default_cfg = _cfg(crop_pct=0.9)
     return model
