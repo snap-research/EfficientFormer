@@ -35,7 +35,7 @@ This branch provides instructions about how to train a [SnapML](https://docs.sna
 Once you have trained the EfficientFormer, you can convert the `pth` model output to a format that can be imported into [Lens Studio](https://ar.snap.com/en-US/lens-studio). To do so, call the conversion script as follows:
 
 ```sh
-python --model path/to/model.pth --output path/to/model.onnx --classes num_classes
+python SnapML_models/conversion_script.py --model path/to/model.pth --output path/to/model.onnx --classes num_classes
 ```
 
 ## Classification on ImageNet-1K
