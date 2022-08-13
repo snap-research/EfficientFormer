@@ -469,48 +469,12 @@ class SnapML_EfficientFormer(nn.Module):
         return cls_out
 
 @register_model
-def SnapML_efficientformer_l0(pretrained=False, **kwargs):
-    model = SnapML_EfficientFormer(
-        layers=EfficientFormer.EfficientFormer_depth['l0'],
-        embed_dims=EfficientFormer.EfficientFormer_width['l0'],
-        downsamples=[True, True, True, True],
-        vit_num=2,
-        **kwargs)
-    model.default_cfg = EfficientFormer._cfg(crop_pct=0.9)
-    return model
-
-
-@register_model
 def SnapML_efficientformer_l1(pretrained=False, **kwargs):
     model = SnapML_EfficientFormer(
         layers=EfficientFormer.EfficientFormer_depth['l1'],
         embed_dims=EfficientFormer.EfficientFormer_width['l1'],
         downsamples=[True, True, True, True],
         vit_num=1,
-        **kwargs)
-    model.default_cfg = EfficientFormer._cfg(crop_pct=0.9)
-    return model
-
-
-@register_model
-def SnapML_efficientformer_l3(pretrained=False, **kwargs):
-    model = SnapML_EfficientFormer(
-        layers=EfficientFormer.EfficientFormer_depth['l3'],
-        embed_dims=EfficientFormer.EfficientFormer_width['l3'],
-        downsamples=[True, True, True, True],
-        vit_num=4,
-        **kwargs)
-    model.default_cfg = EfficientFormer._cfg(crop_pct=0.9)
-    return model
-
-
-@register_model
-def SnapML_efficientformer_l7(pretrained=False, **kwargs):
-    model = SnapML_EfficientFormer(
-        layers=EfficientFormer.EfficientFormer_depth['l7'],
-        embed_dims=EfficientFormer.EfficientFormer_width['l7'],
-        downsamples=[True, True, True, True],
-        vit_num=8,
         **kwargs)
     model.default_cfg = EfficientFormer._cfg(crop_pct=0.9)
     return model
