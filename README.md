@@ -101,6 +101,18 @@ For example, to test EfficientFormer-L1 on an 8-GPU machine:
 sh dist_test.sh efficientformer_l1 8 weights/efficientformer_l1_300d.pth
 ```
 
+## Training SnapML Compatible EfficientFormer
+
+In order to train a SnapML Compatible EfficientFormer, you can swap out the `models/efficientformer.py` with the content from `SnapML_models/EfficientFormer.py` and use the training scripts described above.
+
+## Converting EfficientFormer
+
+Once you have trained the EfficientFormer, you can convert the `pth` model ouptut to a format that can be imported into Lens Studio. To do so, call the conversion script as follows:
+
+```sh
+python --model path/to/model.pth --output path/to/model.onnx --classes num_classes
+```
+
 ## Using EfficientFormer as backbone
 [Object Detection and Instance Segmentation](detection/README.md)<br>
 [Semantic Segmentation](segmentation/README.md)
