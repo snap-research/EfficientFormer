@@ -153,7 +153,7 @@ Thanks for the great implementations!
 
 ## Citation
 
-If our code or models help your work, please cite our [paper](https://arxiv.org/abs/2206.01191):
+If our code or models help your work, please cite our papers:
 ```BibTeX
 @article{li2022efficientformer,
   title={EfficientFormer: Vision Transformers at MobileNet Speed},
