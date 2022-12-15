@@ -19,6 +19,7 @@ from mmseg.utils import collect_env, get_root_logger
 
 
 import backbone
+import backbonev2
 from align_resize import AlignResize
 
 
