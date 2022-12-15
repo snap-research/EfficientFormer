@@ -2,7 +2,10 @@
 
 link
 
-picture
+<p align="center">
+  <img src="images/eformerv2.png" width=70%> <br>
+  Models are trained on ImageNet-1K and deployed on iPhone 12 with CoreMLTools to get latency.
+</p>
 
 
 <details>
