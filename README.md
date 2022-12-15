@@ -1,6 +1,6 @@
-## Announcing EfficientFormerV2<br><sub>Rethinking Vision Transformers for MobileNet Size and Speed</sub>
+## EfficientFormerV2<br><sub>Rethinking Vision Transformers for MobileNet Size and Speed</sub>
 
-- [ ] paper link
+[arXiv]() | [PDF]()
 
 <p align="center">
   <img src="images/eformerv2.png" width=70%> <br>
@@ -62,6 +62,16 @@ We further introduce a fine-grained joint search strategy that can find efficien
 ## Classification on ImageNet-1K
 
 ### Models
+
+| Model | Top-1 (300/450)| #params | MACs | Latency | ckpt | ONNX | CoreML |
+|:---------------|:----:|:---:|:--:|:--:|:--:|:--:|:--:|
+| EfficientFormerV2-S0 |   75.7 / 76.2   |     3.5M    |   0.40B   |      0.9     |      |      |        |
+| EfficientFormerV2-S1 |   79.0 / 79.7   |     6.1M    |   0.65B   |      1.1     |      |      |        |
+| EfficientFormerV2-S2 |   81.6 / 82.0   |    12.6M   |   1.25B   |      1.6     |      |      |        |
+| EfficientFormerV2-L |   83.3 / 83.5   |    26.1M    |   2.56B   |      2.7     |      |      |        |
+
+
+
 | Model | Top-1 Acc.| Latency (ms) | Pytorch Checkpoint | CoreML | ONNX |
 | :------------ | :--: | :---: | :---: |:---: | :---: |
 | EfficientFormer-L1 |79.2 (80.2) | 1.6| [L1-300](https://drive.google.com/file/d/1wtEmkshLFEYFsX5YhBttBOGYaRvDR7nu/view?usp=sharing) ([L1-1000](https://drive.google.com/file/d/11SbX-3cfqTOc247xKYubrAjBiUmr818y/view?usp=sharing)) | [L1](https://drive.google.com/file/d/1MEDcyeKCBmrgVGrHX8wew3l4ge2CWdok/view?usp=sharing) | [L1](https://drive.google.com/file/d/10NMPW8SLLiTa2jwTTuILDQRUzMvehmUM/view?usp=sharing) |
@@ -69,25 +79,14 @@ We further introduce a fine-grained joint search strategy that can find efficien
 | EfficientFormer-L7 |83.3  | 7.0| [L7](https://drive.google.com/file/d/1cVw-pctJwgvGafeouynqWWCwgkcoFMM5/view?usp=sharing) | [L7](https://drive.google.com/file/d/1CnhAyfylpvvebT9Yn3qF8vrUFjZjuO3F/view?usp=sharing) | [L7](https://drive.google.com/file/d/1u6But9JQ9Wd7vlaFTGcYm5FiGnQ8y9eS/view?usp=sharing) |
 
 
-| Model | Top-1 (300/450)| #params | MACs | Latency | ckpt | ONNX | CoreML |
-|:---------------|:----:|:---:|:--:|:--:|:--:|:--:|:--:|
-| EfficientFormerV2-S0 |   75.7 / 76.2   |     3.5    |   0.40   |      0.9     |      |      |        |
-| EfficientFormerV2-S1 |   79.0 / 79.7   |     6.1    |   0.65   |      1.1     |      |      |        |
-| EfficientFormerV2-S2 |   81.6 / 82.0   |    12.6    |   1.25   |      1.6     |      |      |        |
-| EfficientFormerV2-L |   83.3 / 83.5   |    26.1    |   2.56   |      2.7     |      |      |        |
-
 
 ## Latency Measurement 
 
-The latency reported is based on the open-source [CoreMLTools](https://github.com/apple/coremltools). 
+The latency reported in EffcientFormerV2 for iPhone 12 uses the benchmark tool from [XCode 14](https://developer.apple.com/videos/play/wwdc2022/10027/).
 
-[coreml-performance](https://github.com/vladimir-chernykh/coreml-performance) can simply benchmark the speed of our released mlmodels. Thanks for the nice-implemented latency measurement! 
+For EffcientFormerV1, we use the [coreml-performance](https://github.com/vladimir-chernykh/coreml-performance). Thanks for the nice-implemented latency measurement! 
 
 *Tips*: MacOS+XCode and a mobile device (iPhone 12) are needed to reproduce the reported speed. 
-
-
-
-
 
 
 
