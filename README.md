@@ -1,6 +1,6 @@
 ## Announcing EfficientFormerV2<br><sub>Rethinking Vision Transformers for MobileNet Size and Speed</sub>
 
-link
+- [ ] paper link
 
 <p align="center">
   <img src="images/eformerv2.png" width=70%> <br>
