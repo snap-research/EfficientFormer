@@ -1,4 +1,4 @@
-##Announcing EfficientFormerV2<br><sub>Rethinking Vision Transformers for MobileNet Size and Speed</sub>
+## Announcing EfficientFormerV2<br><sub>Rethinking Vision Transformers for MobileNet Size and Speed</sub>
 
 link
 
@@ -15,7 +15,7 @@ However, ViT and its variants still have higher latency or considerably more par
 In practice, latency and size are both crucial for efficient deployment on resource-constraint hardware. 
 In this work, we investigate a central question, can transformer models run as fast as MobileNet and maintain a similar size? 
 We revisit the design choices of ViTs and propose an improved supernet with low latency and high parameter efficiency. 
-We further introduce a fine-grained joint search strategy that can find efficient architectures by optimizing latency and number of parameters simultaneously. The proposed models, EfficientFormerV2, achieve about $4\%$ higher top-1 accuracy than MobileNetV2 and MobileNetV2$\times1.4$ on ImageNet-1K with similar latency and parameters. We demonstrate that properly designed and optimized vision transformers can achieve high performance with MobileNet-level size and speed
+We further introduce a fine-grained joint search strategy that can find efficient architectures by optimizing latency and number of parameters simultaneously. The proposed models, EfficientFormerV2, achieve about 4% higher top-1 accuracy than MobileNetV2 and MobileNetV2x1.4 on ImageNet-1K with similar latency and parameters. We demonstrate that properly designed and optimized vision transformers can achieve high performance with MobileNet-level size and speed.
 </details>
 
 <br>
