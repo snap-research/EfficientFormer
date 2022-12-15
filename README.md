@@ -157,10 +157,16 @@ If our code or models help your work, please cite our [paper](https://arxiv.org/
 ```BibTeX
 @article{li2022efficientformer,
   title={EfficientFormer: Vision Transformers at MobileNet Speed},
-  author={Li, Yanyu and Yuan, Geng and Wen, Yang and Hu, Eric and Evangelidis, Georgios and Tulyakov, Sergey and Wang, Yanzhi and Ren, Jian},
+  author={Li, Yanyu and Yuan, Geng and Wen, Yang and Hu, Ju and Evangelidis, Georgios and Tulyakov, Sergey and Wang, Yanzhi and Ren, Jian},
   journal={arXiv preprint arXiv:2206.01191},
   year={2022}
 }
 ```
-
+```BibTeX
+@article{li2022rethinking,
+  title={Rethinking Vision Transformers for MobileNet Size and Speed},
+  author={Li, Yanyu and Hu, Ju and Wen, Yang and Evangelidis, Georgios and Salahi, Kamyar and Wang, Yanzhi and Tulyakov, Sergey and Ren, Jian},
+  year={2022}
+}
+```
 
