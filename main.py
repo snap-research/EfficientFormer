@@ -57,7 +57,7 @@ def get_args_parser():
     # Learning rate schedule parameters
     parser.add_argument('--sched', default='cosine', type=str, metavar='SCHEDULER',
                         help='LR scheduler (default: "cosine"')
-    parser.add_argument('--lr', type=float, default=2e-3, metavar='LR',
+    parser.add_argument('--lr', type=float, default=1e-3, metavar='LR',
                         help='learning rate (default: 2e-3)')
     parser.add_argument('--lr-noise', type=float, nargs='+', default=None, metavar='pct, pct',
                         help='learning rate noise on/off epoch percentages')
@@ -65,7 +65,7 @@ def get_args_parser():
                         help='learning rate noise limit percent (default: 0.67)')
     parser.add_argument('--lr-noise-std', type=float, default=1.0, metavar='STDDEV',
                         help='learning rate noise std-dev (default: 1.0)')
-    parser.add_argument('--warmup-lr', type=float, default=1e-6, metavar='LR',
+    parser.add_argument('--warmup-lr', type=float, default=1e-5, metavar='LR',
                         help='warmup learning rate (default: 1e-6)')
     parser.add_argument('--min-lr', type=float, default=1e-5, metavar='LR',
                         help='lower lr bound for cyclic schedulers that hit 0 (1e-5)')
@@ -157,13 +157,17 @@ def get_args_parser():
     parser.add_argument('--eval', action='store_true',
                         help='Perform evaluation only')
     parser.add_argument('--dist-eval', action='store_true',
-                        default=False, help='Enabling distributed evaluation')
-    parser.add_argument('--num_workers', default=10, type=int)
+                        default=True, help='Enabling distributed evaluation')
+    parser.add_argument('--num_workers', default=8, type=int)
     parser.add_argument('--pin-mem', action='store_true',
                         help='Pin CPU memory in DataLoader for more efficient (sometimes) transfer to GPU.')
     parser.add_argument('--no-pin-mem', action='store_false', dest='pin_mem',
                         help='')
     parser.set_defaults(pin_mem=True)
+
+    parser.add_argument('--sync-bn', action='store_true',
+                        help='Enable NVIDIA Apex or Torch synchronized BatchNorm.')
+    parser.set_defaults(sync_bn=True)
 
     # distributed training parameters
     parser.add_argument('--world_size', default=1, type=int,
@@ -275,19 +279,23 @@ def main(args):
             decay=args.model_ema_decay,
             device='cpu' if args.model_ema_force_cpu else '',
             resume='')
+    if args.sync_bn:
+        model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(model)
 
     model_without_ddp = model
     if args.distributed:
         model = torch.nn.parallel.DistributedDataParallel(
-            model, device_ids=[args.gpu])
+            model, device_ids=[args.gpu],
+            find_unused_parameters=False)
         model_without_ddp = model.module
     n_parameters = sum(p.numel()
                        for p in model.parameters() if p.requires_grad)
     print('number of params:', n_parameters)
 
     # better not to scale up lr for AdamW optimizer
-    # linear_scaled_lr = args.lr * args.batch_size * utils.get_world_size() / 512.0
-    # args.lr = linear_scaled_lr
+    # linear_scaled_lr = args.lr + 5e-4 * args.batch_size * utils.get_world_size() / 1024.0
+    linear_scaled_lr = args.lr * args.batch_size * utils.get_world_size() / 1024.0
+    args.lr = linear_scaled_lr
 
     optimizer = create_optimizer(args, model_without_ddp)
     loss_scaler = NativeScaler()
@@ -337,7 +345,8 @@ def main(args):
                 args.resume, map_location='cpu', check_hash=True)
         else:
             checkpoint = torch.load(args.resume, map_location='cpu')
-        model_without_ddp.load_state_dict(checkpoint['model'])
+        model_without_ddp.load_state_dict(checkpoint['model'], strict=True)
+        # model_without_ddp.load_state_dict(checkpoint, strict=False)
         if not args.eval and 'optimizer' in checkpoint and 'lr_scheduler' in checkpoint and 'epoch' in checkpoint:
             optimizer.load_state_dict(checkpoint['optimizer'])
             lr_scheduler.load_state_dict(checkpoint['lr_scheduler'])
@@ -364,7 +373,7 @@ def main(args):
             model, criterion, data_loader_train,
             optimizer, device, epoch, loss_scaler,
             args.clip_grad, args.clip_mode, model_ema, mixup_fn,
-            set_training_mode=args.finetune == ''  # keep in eval mode during finetuning
+            set_training_mode=args.finetune == '',  # keep in eval mode during finetuning
         )
 
         lr_scheduler.step(epoch)
@@ -381,7 +390,7 @@ def main(args):
                     'args': args,
                 }, checkpoint_path)
 
-        if epoch % 20 == 19:
+        if epoch % 4 == 3:
             test_stats = evaluate(data_loader_val, model, device)
             print(
                 f"Accuracy of the network on the {len(dataset_val)} test images: {test_stats['acc1']:.1f}%")
