@@ -70,7 +70,7 @@ We further introduce a fine-grained joint search strategy that can find efficien
 
 
 | Model | Top-1 | Params (M) | MACs (B) | Latency (ms) | ckpt | ONNX | CoreML |
-|:---------------|:--:|:---:|:--:|:--:|:--:|:--:|:--:|
+|:---------------|:----:|:---:|:--:|:--:|:--:|:--:|:--:|
 | EfficientFormerV2-S0 |   75.7 / 76.2   |     3.5    |   0.40   |      0.9     |      |      |        |
 | EfficientFormerV2-S1 |   79.0 / 79.7   |     6.1    |   0.65   |      1.1     |      |      |        |
 | EfficientFormerV2-S2 |   81.6 / 82.0   |    12.6    |   1.25   |      1.6     |      |      |        |
