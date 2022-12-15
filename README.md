@@ -63,7 +63,7 @@ We further introduce a fine-grained joint search strategy that can find efficien
 
 ### Models
 | Model | Top-1 Acc.| Latency on iPhone 12 (ms) | Pytorch Checkpoint | CoreML | ONNX |
-| :--------- | :---: | :---: | :---: |:---: | :---: |
+| :------------ | :---: | :---: | :---: |:---: | :---: |
 | EfficientFormer-L1 | 79.2 (80.2) | 1.6| [L1-300](https://drive.google.com/file/d/1wtEmkshLFEYFsX5YhBttBOGYaRvDR7nu/view?usp=sharing) ([L1-1000](https://drive.google.com/file/d/11SbX-3cfqTOc247xKYubrAjBiUmr818y/view?usp=sharing)) | [L1](https://drive.google.com/file/d/1MEDcyeKCBmrgVGrHX8wew3l4ge2CWdok/view?usp=sharing) | [L1](https://drive.google.com/file/d/10NMPW8SLLiTa2jwTTuILDQRUzMvehmUM/view?usp=sharing) |
 | EfficientFormer-L3 | 82.4 | 3.0| [L3](https://drive.google.com/file/d/1OyyjKKxDyMj-BcfInp4GlDdwLu3hc30m/view?usp=sharing) | [L3](https://drive.google.com/file/d/12xb0_6pPAy0OWdW39seL9TStIqKyguEj/view?usp=sharing) | [L3](https://drive.google.com/file/d/1DEbsOEzP4ljS6-ka86BtwQWiVxkylCaX/view?usp=sharing) |
 | EfficientFormer-L7 | 83.3  | 7.0| [L7](https://drive.google.com/file/d/1cVw-pctJwgvGafeouynqWWCwgkcoFMM5/view?usp=sharing) | [L7](https://drive.google.com/file/d/1CnhAyfylpvvebT9Yn3qF8vrUFjZjuO3F/view?usp=sharing) | [L7](https://drive.google.com/file/d/1u6But9JQ9Wd7vlaFTGcYm5FiGnQ8y9eS/view?usp=sharing) |
