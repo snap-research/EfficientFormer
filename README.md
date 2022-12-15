@@ -65,18 +65,18 @@ We further introduce a fine-grained joint search strategy that can find efficien
 
 | Model | Top-1 (300/450)| #params | MACs | Latency | ckpt | ONNX | CoreML |
 |:---------------|:----:|:---:|:--:|:--:|:--:|:--:|:--:|
-| EfficientFormerV2-S0 |   75.7 / 76.2   |     3.5M    |   0.40B   |      0.9     |      |      |        |
-| EfficientFormerV2-S1 |   79.0 / 79.7   |     6.1M    |   0.65B   |      1.1     |      |      |        |
-| EfficientFormerV2-S2 |   81.6 / 82.0   |    12.6M   |   1.25B   |      1.6     |      |      |        |
-| EfficientFormerV2-L |   83.3 / 83.5   |    26.1M    |   2.56B   |      2.7     |      |      |        |
+| EfficientFormerV2-S0 |   75.7 / 76.2   |     3.5M    |   0.40B   |      0.9ms     |      |      |        |
+| EfficientFormerV2-S1 |   79.0 / 79.7   |     6.1M    |   0.65B   |      1.1ms     |      |      |        |
+| EfficientFormerV2-S2 |   81.6 / 82.0   |    12.6M   |   1.25B   |      1.6ms     |      |      |        |
+| EfficientFormerV2-L |   83.3 / 83.5   |    26.1M    |   2.56B   |      2.7ms     |      |      |        |
 
 
 
-| Model | Top-1 Acc.| Latency (ms) | Pytorch Checkpoint | CoreML | ONNX |
+| Model | Top-1 Acc.| Latency | Pytorch Checkpoint | CoreML | ONNX |
 | :------------ | :--: | :---: | :---: |:---: | :---: |
-| EfficientFormer-L1 |79.2 (80.2) | 1.6| [L1-300](https://drive.google.com/file/d/1wtEmkshLFEYFsX5YhBttBOGYaRvDR7nu/view?usp=sharing) ([L1-1000](https://drive.google.com/file/d/11SbX-3cfqTOc247xKYubrAjBiUmr818y/view?usp=sharing)) | [L1](https://drive.google.com/file/d/1MEDcyeKCBmrgVGrHX8wew3l4ge2CWdok/view?usp=sharing) | [L1](https://drive.google.com/file/d/10NMPW8SLLiTa2jwTTuILDQRUzMvehmUM/view?usp=sharing) |
-| EfficientFormer-L3 |82.4 | 3.0| [L3](https://drive.google.com/file/d/1OyyjKKxDyMj-BcfInp4GlDdwLu3hc30m/view?usp=sharing) | [L3](https://drive.google.com/file/d/12xb0_6pPAy0OWdW39seL9TStIqKyguEj/view?usp=sharing) | [L3](https://drive.google.com/file/d/1DEbsOEzP4ljS6-ka86BtwQWiVxkylCaX/view?usp=sharing) |
-| EfficientFormer-L7 |83.3  | 7.0| [L7](https://drive.google.com/file/d/1cVw-pctJwgvGafeouynqWWCwgkcoFMM5/view?usp=sharing) | [L7](https://drive.google.com/file/d/1CnhAyfylpvvebT9Yn3qF8vrUFjZjuO3F/view?usp=sharing) | [L7](https://drive.google.com/file/d/1u6But9JQ9Wd7vlaFTGcYm5FiGnQ8y9eS/view?usp=sharing) |
+| EfficientFormer-L1 |79.2 (80.2) | 1.6ms| [L1-300](https://drive.google.com/file/d/1wtEmkshLFEYFsX5YhBttBOGYaRvDR7nu/view?usp=sharing) ([L1-1000](https://drive.google.com/file/d/11SbX-3cfqTOc247xKYubrAjBiUmr818y/view?usp=sharing)) | [L1](https://drive.google.com/file/d/1MEDcyeKCBmrgVGrHX8wew3l4ge2CWdok/view?usp=sharing) | [L1](https://drive.google.com/file/d/10NMPW8SLLiTa2jwTTuILDQRUzMvehmUM/view?usp=sharing) |
+| EfficientFormer-L3 |82.4 | 3.0ms| [L3](https://drive.google.com/file/d/1OyyjKKxDyMj-BcfInp4GlDdwLu3hc30m/view?usp=sharing) | [L3](https://drive.google.com/file/d/12xb0_6pPAy0OWdW39seL9TStIqKyguEj/view?usp=sharing) | [L3](https://drive.google.com/file/d/1DEbsOEzP4ljS6-ka86BtwQWiVxkylCaX/view?usp=sharing) |
+| EfficientFormer-L7 |83.3  | 7.0ms| [L7](https://drive.google.com/file/d/1cVw-pctJwgvGafeouynqWWCwgkcoFMM5/view?usp=sharing) | [L7](https://drive.google.com/file/d/1CnhAyfylpvvebT9Yn3qF8vrUFjZjuO3F/view?usp=sharing) | [L7](https://drive.google.com/file/d/1u6But9JQ9Wd7vlaFTGcYm5FiGnQ8y9eS/view?usp=sharing) |
 
 
 
