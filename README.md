@@ -1,6 +1,6 @@
 ## EfficientFormerV2<br><sub>Rethinking Vision Transformers for MobileNet Size and Speed</sub>
 
-[arXiv]() | [PDF]()
+[arXiv](https://arxiv.org/abs/2212.08059) | [PDF](https://arxiv.org/pdf/2212.08059.pdf)
 
 <p align="center">
   <img src="images/eformerv2.png" width=70%> <br>
@@ -82,7 +82,7 @@ We further introduce a fine-grained joint search strategy that can find efficien
 
 ## Latency Measurement 
 
-The latency reported in EffcientFormerV2 for iPhone 12 uses the benchmark tool from [XCode 14](https://developer.apple.com/videos/play/wwdc2022/10027/).
+The latency reported in EffcientFormerV2 for iPhone 12 (iOS 16) uses the benchmark tool from [XCode 14](https://developer.apple.com/videos/play/wwdc2022/10027/).
 
 For EffcientFormerV1, we use the [coreml-performance](https://github.com/vladimir-chernykh/coreml-performance). Thanks for the nice-implemented latency measurement! 
 
