@@ -20,6 +20,7 @@ from mmdet.models import build_detector
 import sys
 
 import backbone
+import backbonev2
 
 
 def parse_args():

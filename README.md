@@ -1,3 +1,35 @@
+## EfficientFormerV2<br><sub>Rethinking Vision Transformers for MobileNet Size and Speed</sub>
+
+[arXiv]() | [PDF]()
+
+<p align="center">
+  <img src="images/eformerv2.png" width=70%> <br>
+  Models are trained on ImageNet-1K and deployed on iPhone 12 with CoreMLTools to get latency.
+</p>
+
+
+<details>
+  <summary>
+  <font size="+1">Abstract</font>
+  </summary>
+With the success of Vision Transformers (ViTs) in computer vision tasks, recent arts try to optimize the performance and complexity of ViTs to enable efficient deployment on mobile devices.
+Multiple approaches are proposed to accelerate attention mechanism, improve inefficient designs, or incorporate mobile-friendly lightweight convolutions to form hybrid architectures.
+However, ViT and its variants still have higher latency or considerably more parameters than lightweight CNNs, even true for the years-old MobileNet. 
+In practice, latency and size are both crucial for efficient deployment on resource-constraint hardware. 
+In this work, we investigate a central question, can transformer models run as fast as MobileNet and maintain a similar size? 
+We revisit the design choices of ViTs and propose an improved supernet with low latency and high parameter efficiency. 
+We further introduce a fine-grained joint search strategy that can find efficient architectures by optimizing latency and number of parameters simultaneously. The proposed models, EfficientFormerV2, achieve about 4% higher top-1 accuracy than MobileNetV2 and MobileNetV2x1.4 on ImageNet-1K with similar latency and parameters. We demonstrate that properly designed and optimized vision transformers can achieve high performance with MobileNet-level size and speed.
+</details>
+
+<br>
+
+### Changelog and ToDos
+- [x] Add EfficientFormerV2 model family, including `efficientformerv2_s0`, `efficientformerv2_s1`, `efficientformerv2_s2` and `efficientformerv2_l`. 
+- [x] Pretrained checkpoints of EfficientFormerV2 on ImageNet-1K are released. 
+- [x] Update EfficientFormerV2 in downstream tasks (detection, segmentation). 
+- [ ] Release checkpoints in downstream tasks. 
+
+
 ## EfficientFormer<br><sub>Vision Transformers at MobileNet Speed</sub>
 
 [arXiv](https://arxiv.org/abs/2206.01191) | [PDF](https://arxiv.org/pdf/2206.01191.pdf)
@@ -30,24 +62,31 @@
 ## Classification on ImageNet-1K
 
 ### Models
-| Model | Top-1 Acc.| Latency on iPhone 12 (ms) | Pytorch Checkpoint | CoreML | ONNX |
-| :--- | :---: | :---: | :---: |:---: | :---: |
-| EfficientFormer-L1 | 79.2 (80.2) | 1.6| [L1-300](https://drive.google.com/file/d/1wtEmkshLFEYFsX5YhBttBOGYaRvDR7nu/view?usp=sharing) ([L1-1000](https://drive.google.com/file/d/11SbX-3cfqTOc247xKYubrAjBiUmr818y/view?usp=sharing)) | [L1](https://drive.google.com/file/d/1MEDcyeKCBmrgVGrHX8wew3l4ge2CWdok/view?usp=sharing) | [L1](https://drive.google.com/file/d/10NMPW8SLLiTa2jwTTuILDQRUzMvehmUM/view?usp=sharing) |
-| EfficientFormer-L3 | 82.4 | 3.0| [L3](https://drive.google.com/file/d/1OyyjKKxDyMj-BcfInp4GlDdwLu3hc30m/view?usp=sharing) | [L3](https://drive.google.com/file/d/12xb0_6pPAy0OWdW39seL9TStIqKyguEj/view?usp=sharing) | [L3](https://drive.google.com/file/d/1DEbsOEzP4ljS6-ka86BtwQWiVxkylCaX/view?usp=sharing) |
-| EfficientFormer-L7 | 83.3  | 7.0| [L7](https://drive.google.com/file/d/1cVw-pctJwgvGafeouynqWWCwgkcoFMM5/view?usp=sharing) | [L7](https://drive.google.com/file/d/1CnhAyfylpvvebT9Yn3qF8vrUFjZjuO3F/view?usp=sharing) | [L7](https://drive.google.com/file/d/1u6But9JQ9Wd7vlaFTGcYm5FiGnQ8y9eS/view?usp=sharing) |
+
+| Model | Top-1 (300/450)| #params | MACs | Latency | ckpt | ONNX | CoreML |
+|:---------------|:----:|:---:|:--:|:--:|:--:|:--:|:--:|
+| EfficientFormerV2-S0 |   75.7 / 76.2   |     3.5M    |   0.40B   |      0.9ms     |  [S0](https://drive.google.com/file/d/1PXb7b9pv9ZB4cfkRkYEdwgWuVwvEiazq/view?usp=share_link)    |   [S0](https://drive.google.com/file/d/1xWev98ENruLnnxgFXORmrYzNG5Y8b8y6/view?usp=share_link)   |    [S0](https://drive.google.com/file/d/19G3RGcH42gqPBa42CV3yIOmSmVVFqW0X/view?usp=share_link)    |
+| EfficientFormerV2-S1 |   79.0 / 79.7   |     6.1M    |   0.65B   |      1.1ms     |   [S1](https://drive.google.com/file/d/1EKe1vt-3mG7iceVIMaET_DyISzVTJMn8/view?usp=share_link)   |   [S1](https://drive.google.com/file/d/1f4eYkY3Tkmyn_GrDk4QqbpWYcF07CukT/view?usp=share_link)   |    [S1](https://drive.google.com/file/d/1EXI0uq3yt0KpMlItjJlnghYfAzWgdbRj/view?usp=share_link)    |
+| EfficientFormerV2-S2 |   81.6 / 82.0   |    12.6M   |   1.25B   |      1.6ms     |   [S2](https://drive.google.com/file/d/1gjbFyB5T_yAkmzHNuXEljqScYVQZafMQ/view?usp=share_link)   |   [S2](https://drive.google.com/file/d/1kJj2UxUQR-ro4WslcnsukcJF9BXi0FMC/view?usp=share_link)   |    [S2](https://drive.google.com/file/d/1KQw7UMujsHrLUCDOY-pO6rM7zfp7cpDY/view?usp=share_link)    |
+| EfficientFormerV2-L |   83.3 / 83.5   |    26.1M    |   2.56B   |      2.7ms     |  [L](https://drive.google.com/file/d/1sRXNBHl_ewHBMwwYZVsOJo1k6JpcNJn-/view?usp=share_link)    |   [L](https://drive.google.com/file/d/18GfCWWdYYcEz_AOmoO6J7dW8xMtkIpcm/view?usp=share_link)   |     [L](https://drive.google.com/file/d/1Ynu7fTbqPEW9tSVZdR7ZAN1edUFAocGT/view?usp=share_link)   |
+
+
+
+| Model | Top-1 Acc.| Latency | Pytorch Checkpoint | CoreML | ONNX |
+| :------------ | :--: | :---: | :---: |:---: | :---: |
+| EfficientFormer-L1 |79.2 (80.2) | 1.6ms| [L1-300](https://drive.google.com/file/d/1wtEmkshLFEYFsX5YhBttBOGYaRvDR7nu/view?usp=sharing) ([L1-1000](https://drive.google.com/file/d/11SbX-3cfqTOc247xKYubrAjBiUmr818y/view?usp=sharing)) | [L1](https://drive.google.com/file/d/1MEDcyeKCBmrgVGrHX8wew3l4ge2CWdok/view?usp=sharing) | [L1](https://drive.google.com/file/d/10NMPW8SLLiTa2jwTTuILDQRUzMvehmUM/view?usp=sharing) |
+| EfficientFormer-L3 |82.4 | 3.0ms| [L3](https://drive.google.com/file/d/1OyyjKKxDyMj-BcfInp4GlDdwLu3hc30m/view?usp=sharing) | [L3](https://drive.google.com/file/d/12xb0_6pPAy0OWdW39seL9TStIqKyguEj/view?usp=sharing) | [L3](https://drive.google.com/file/d/1DEbsOEzP4ljS6-ka86BtwQWiVxkylCaX/view?usp=sharing) |
+| EfficientFormer-L7 |83.3  | 7.0ms| [L7](https://drive.google.com/file/d/1cVw-pctJwgvGafeouynqWWCwgkcoFMM5/view?usp=sharing) | [L7](https://drive.google.com/file/d/1CnhAyfylpvvebT9Yn3qF8vrUFjZjuO3F/view?usp=sharing) | [L7](https://drive.google.com/file/d/1u6But9JQ9Wd7vlaFTGcYm5FiGnQ8y9eS/view?usp=sharing) |
+
 
 
 ## Latency Measurement 
 
-The latency reported is based on the open-source [CoreMLTools](https://github.com/apple/coremltools). 
+The latency reported in EffcientFormerV2 for iPhone 12 uses the benchmark tool from [XCode 14](https://developer.apple.com/videos/play/wwdc2022/10027/).
 
-[coreml-performance](https://github.com/vladimir-chernykh/coreml-performance) can simply benchmark the speed of our released mlmodels. Thanks for the nice-implemented latency measurement! 
+For EffcientFormerV1, we use the [coreml-performance](https://github.com/vladimir-chernykh/coreml-performance). Thanks for the nice-implemented latency measurement! 
 
 *Tips*: MacOS+XCode and a mobile device (iPhone 12) are needed to reproduce the reported speed. 
-
-
-
-
 
 
 
@@ -114,14 +153,20 @@ Thanks for the great implementations!
 
 ## Citation
 
-If our code or models help your work, please cite our [paper](https://arxiv.org/abs/2206.01191):
+If our code or models help your work, please cite our papers:
 ```BibTeX
 @article{li2022efficientformer,
   title={EfficientFormer: Vision Transformers at MobileNet Speed},
-  author={Li, Yanyu and Yuan, Geng and Wen, Yang and Hu, Eric and Evangelidis, Georgios and Tulyakov, Sergey and Wang, Yanzhi and Ren, Jian},
+  author={Li, Yanyu and Yuan, Geng and Wen, Yang and Hu, Ju and Evangelidis, Georgios and Tulyakov, Sergey and Wang, Yanzhi and Ren, Jian},
   journal={arXiv preprint arXiv:2206.01191},
   year={2022}
 }
 ```
-
+```BibTeX
+@article{li2022rethinking,
+  title={Rethinking Vision Transformers for MobileNet Size and Speed},
+  author={Li, Yanyu and Hu, Ju and Wen, Yang and Evangelidis, Georgios and Salahi, Kamyar and Wang, Yanzhi and Tulyakov, Sergey and Ren, Jian},
+  year={2022}
+}
+```
 

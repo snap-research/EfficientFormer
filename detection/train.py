@@ -27,6 +27,7 @@ import mmcv_custom.runner.optimizer
 import sys
 
 import backbone
+import backbonev2
 
 
 def parse_args():
