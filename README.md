@@ -65,10 +65,10 @@ We further introduce a fine-grained joint search strategy that can find efficien
 
 | Model | Top-1 (300/450)| #params | MACs | Latency | ckpt | ONNX | CoreML |
 |:---------------|:----:|:---:|:--:|:--:|:--:|:--:|:--:|
-| EfficientFormerV2-S0 |   75.7 / 76.2   |     3.5M    |   0.40B   |      0.9ms     |      |      |        |
-| EfficientFormerV2-S1 |   79.0 / 79.7   |     6.1M    |   0.65B   |      1.1ms     |      |      |        |
-| EfficientFormerV2-S2 |   81.6 / 82.0   |    12.6M   |   1.25B   |      1.6ms     |      |      |        |
-| EfficientFormerV2-L |   83.3 / 83.5   |    26.1M    |   2.56B   |      2.7ms     |      |      |        |
+| EfficientFormerV2-S0 |   75.7 / 76.2   |     3.5M    |   0.40B   |      0.9ms     |  [S0](https://drive.google.com/file/d/1PXb7b9pv9ZB4cfkRkYEdwgWuVwvEiazq/view?usp=share_link)    |   [S0](https://drive.google.com/file/d/1xWev98ENruLnnxgFXORmrYzNG5Y8b8y6/view?usp=share_link)   |    [S0](https://drive.google.com/file/d/19G3RGcH42gqPBa42CV3yIOmSmVVFqW0X/view?usp=share_link)    |
+| EfficientFormerV2-S1 |   79.0 / 79.7   |     6.1M    |   0.65B   |      1.1ms     |   [S1](https://drive.google.com/file/d/1EKe1vt-3mG7iceVIMaET_DyISzVTJMn8/view?usp=share_link)   |   [S1](https://drive.google.com/file/d/1f4eYkY3Tkmyn_GrDk4QqbpWYcF07CukT/view?usp=share_link)   |    [S1](https://drive.google.com/file/d/1EXI0uq3yt0KpMlItjJlnghYfAzWgdbRj/view?usp=share_link)    |
+| EfficientFormerV2-S2 |   81.6 / 82.0   |    12.6M   |   1.25B   |      1.6ms     |   [S2](https://drive.google.com/file/d/1gjbFyB5T_yAkmzHNuXEljqScYVQZafMQ/view?usp=share_link)   |   [S2](https://drive.google.com/file/d/1kJj2UxUQR-ro4WslcnsukcJF9BXi0FMC/view?usp=share_link)   |    [S2](https://drive.google.com/file/d/1KQw7UMujsHrLUCDOY-pO6rM7zfp7cpDY/view?usp=share_link)    |
+| EfficientFormerV2-L |   83.3 / 83.5   |    26.1M    |   2.56B   |      2.7ms     |  [L](https://drive.google.com/file/d/1sRXNBHl_ewHBMwwYZVsOJo1k6JpcNJn-/view?usp=share_link)    |   [L](https://drive.google.com/file/d/18GfCWWdYYcEz_AOmoO6J7dW8xMtkIpcm/view?usp=share_link)   |     [L](https://drive.google.com/file/d/1Ynu7fTbqPEW9tSVZdR7ZAN1edUFAocGT/view?usp=share_link)   |
 
 
 
