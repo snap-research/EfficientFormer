@@ -7,6 +7,9 @@
   Models are trained on ImageNet-1K and deployed on iPhone 12 with CoreMLTools to get latency.
 </p>
 
+>[Rethinking Vision Transformers for MobileNet Size and Speed](https://arxiv.org/abs/2212.08059)<br>
+>[Yanyu Li](https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=XUj8koUAAAAJ&sortby=pubdate)<sup>1,2</sup>, [Ju Hu](https://www.linkedin.com/in/erichuju/)<sup>1</sup>, [Yang Wen](https://www.linkedin.com/in/yang-wen-76749924/)<sup>1</sup>, [Georgios Evangelidis](https://sites.google.com/site/georgeevangelidis/)<sup>1</sup>, [Kamyar Salahi](https://www.linkedin.com/in/kamyarsalahi/)<sup>3</sup>, <br>[Yanzhi Wang](https://coe.northeastern.edu/people/wang-yanzhi/)<sup>2</sup>, [Sergey Tulyakov](http://www.stulyakov.com/)<sup>1</sup>, [Jian Ren](https://alanspike.github.io/)<sup>1</sup>  
+><sup>1</sup>Snap Inc., <sup>2</sup>Northeastern University, <sup>3</sup>UC Berkeley
 
 <details>
   <summary>
@@ -166,6 +169,7 @@ If our code or models help your work, please cite our papers:
 @article{li2022rethinking,
   title={Rethinking Vision Transformers for MobileNet Size and Speed},
   author={Li, Yanyu and Hu, Ju and Wen, Yang and Evangelidis, Georgios and Salahi, Kamyar and Wang, Yanzhi and Tulyakov, Sergey and Ren, Jian},
+  journal={arXiv preprint arXiv:2212.08059},
   year={2022}
 }
 ```
