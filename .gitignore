@@ -5,3 +5,12 @@ __pycache__
 dist_test.sh
 dist_train.sh
 weights/
+detection/data
+detection/eformer_l/
+detection/eformer_s2/
+segmentation/data
+segmentation/work_dirs/
+detection/slurm_train.sh
+segmentation/tools/slurm_train.sh
+
+
