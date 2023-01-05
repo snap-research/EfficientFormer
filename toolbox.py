@@ -1,3 +1,4 @@
+import argparse
 import torch
 import torch.nn as nn
 import torchvision
@@ -6,6 +7,22 @@ from models import *
 from models.efficientformer import Attention
 from models.efficientformer_v2 import Attention4D, Attention4DDownsample
 import timm
+
+
+def parse():
+    parser = argparse.ArgumentParser(description='EfficientFormer Toolbox')
+    parser.add_argument('--model', metavar='ARCH', default='efficientformerv2_l')
+    parser.add_argument('--ckpt', default='weights/eformer_l_450.pth', type=str, metavar='PATH',
+                        help='path to checkpoint')
+    parser.add_argument('--profile', action='store_true', default=True,
+                        help='profiling GMACs')
+    parser.add_argument("--resolution", default=224, type=int)
+    parser.add_argument('--onnx', action='store_true', default=False,
+                        help='export onnx')
+    parser.add_argument('--coreml', action='store_true', default=False,
+                        help='export coreml')
+    args = parser.parse_args()
+    return args
 
 
 class ProfileConv(nn.Module):
@@ -70,52 +87,51 @@ class ProfileConv(nn.Module):
         return self.macs, self.params
 
 
-# model = torchvision.models.resnet50()
-model = efficientformerv2_l()
+if __name__ == '__main__':
+    args = parse()
+    model_name = eval(args.model)
+    model = model_name(resolution=args.resolution)
+    try:
+        model.load_state_dict(torch.load(args.ckpt, map_location='cpu')['model'])
+        print('load success, model is initialized with pretrained checkpoint')
+    except:
+        print('model initialized without pretrained checkpoint')
 
-# model.load_state_dict(torch.load('efficientvit_l3_300d.pth')['model'])
-# print('load success')
+    model.eval()
+    dummy_input = torch.randn(1, 3, args.resolution, args.resolution)
 
-model.eval()
+    if args.profile:
+        #  ###############################################################
+        # Optionally, you can profile the model with public tools, say ptflops,
+        # but to the best of my knowledge, those tools cannot profile matrix multiplications in attention
+        # Another note, we do not profile BN, as they are fused at inference phase
+        #
+        # from ptflops import get_model_complexity_info
+        # with torch.cuda.device(0):
+        #   macs, params = get_model_complexity_info(model, (3, 224, 224), as_strings=True,
+        #                                            print_per_layer_stat=True, verbose=True)
+        #   print('{:<30}  {:<8}'.format('Computational complexity: ', macs))
+        #   print('{:<30}  {:<8}'.format('Number of parameters: ', params))
+        #  #############################################################
 
-#  ###############################################################
-# import torchvision.models as models
-# import torch
-# from ptflops import get_model_complexity_info
-#
-# with torch.cuda.device(0):
-#   macs, params = get_model_complexity_info(model, (3, 224, 224), as_strings=True,
-#                                            print_per_layer_stat=True, verbose=True)
-#   print('{:<30}  {:<8}'.format('Computational complexity: ', macs))
-#   print('{:<30}  {:<8}'.format('Number of parameters: ', params))
+        profile = ProfileConv(model)
+        MACs, params = profile(dummy_input)
+        print('number of tracked layers (conv, fc, gelu, ...):', len(MACs))
+        print(sum(MACs) / 1e9, 'GMACs')
+        print(sum(params) / 1e6, 'M parameters')
 
+    if args.onnx:
+        torch.onnx.export(model, dummy_input, args.model + ".onnx", verbose=False)  # , opset_version=9
+        print('successfully export onnx')
 
-#  #############################################################
+    if args.coreml:
+        example_input = dummy_input
+        traced_model = torch.jit.trace(model, example_input)
+        out = traced_model(example_input)
 
-
-resolution = 224
-name = 'efficientnet_b0'
-
-dummy_input = torch.randn(1, 3, resolution, resolution)
-profile = ProfileConv(model)
-MACs, params = profile(dummy_input)
-print('number of conv&fc layers:', len(MACs))
-print(sum(MACs) / 1e9, 'GMACs')
-print(sum(params) / 1e6, 'M parameters')
-
-# torch.onnx.export(model, dummy_input, name + "_bs1_relu.onnx", verbose=True)  # , opset_version=9
-# print('successfully export onnx')
-
-
-# example_input = dummy_input
-# traced_model = torch.jit.trace(model, example_input)
-# out = traced_model(example_input)
-#
-# model = ct.convert(
-#     traced_model,
-#     inputs=[ct.ImageType(shape=example_input.shape, channel_first=True)]
-# )
-#
-# model.save(name + "_gelu.mlmodel")
-# # model.save("mobilenet_v3_small.mlmodel")
-# print('successfully export coreML')
+        model = ct.convert(
+            traced_model,
+            inputs=[ct.ImageType(shape=example_input.shape, channel_first=True)]
+        )
+        model.save(args.model + ".mlmodel")
+        print('successfully export coreML')
