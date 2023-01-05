@@ -206,16 +206,13 @@ class LGQuery(torch.nn.Module):
 
 
 class Attention4DDownsample(torch.nn.Module):
-    def __init__(self, dim=384, key_dim=32, num_heads=16,
+    def __init__(self, dim=384, key_dim=16, num_heads=8,
                  attn_ratio=4,
                  resolution=7,
                  out_dim=None,
                  act_layer=None,
                  ):
         super().__init__()
-        key_dim = 16
-        num_heads = 8
-
         self.num_heads = num_heads
         self.scale = key_dim ** -0.5
         self.key_dim = key_dim

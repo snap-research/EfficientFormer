@@ -40,6 +40,8 @@ class Attention(torch.nn.Module):
         self.dh = int(attn_ratio * key_dim) * num_heads
         self.attn_ratio = attn_ratio
         h = self.dh + nh_kd * 2
+        self.N = resolution ** 2
+        self.N2 = self.N
         self.qkv = nn.Linear(dim, h)
         self.proj = nn.Linear(self.dh, dim)
 
