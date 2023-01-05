@@ -30,7 +30,12 @@ We further introduce a fine-grained joint search strategy that can find efficien
 - [x] Add EfficientFormerV2 model family, including `efficientformerv2_s0`, `efficientformerv2_s1`, `efficientformerv2_s2` and `efficientformerv2_l`. 
 - [x] Pretrained checkpoints of EfficientFormerV2 on ImageNet-1K are released. 
 - [x] Update EfficientFormerV2 in downstream tasks (detection, segmentation). 
-- [ ] Release checkpoints in downstream tasks. 
+- [x] Release checkpoints in downstream tasks. 
+- [x] Add extra tools for profiling and deployment, example usage: 
+
+```
+python toolbox.py --model efficientformerv2_l --ckpt weights/eformer_l_450.pth --onnx --coreml
+```
 
 
 ## EfficientFormer<br><sub>Vision Transformers at MobileNet Speed</sub>
