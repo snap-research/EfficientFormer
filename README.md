@@ -31,7 +31,7 @@ We further introduce a fine-grained joint search strategy that can find efficien
 - [x] Pretrained checkpoints of EfficientFormerV2 on ImageNet-1K are released. 
 - [x] Update EfficientFormerV2 in downstream tasks (detection, segmentation). 
 - [x] Release checkpoints in downstream tasks. 
-- [x] Add extra tools for profiling and deployment, example usage: 
+- [x] Add extra tools for profiling and deployment (we use CoreML==5.2 and Torch==1.11), example usage: 
 
 ```
 python toolbox.py --model efficientformerv2_l --ckpt weights/eformer_l_450.pth --onnx --coreml
