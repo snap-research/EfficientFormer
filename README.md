@@ -161,21 +161,22 @@ Thanks for the great implementations!
 
 ## Citation
 
-If our code or models help your work, please cite our papers:
+If our code or models help your work, please cite EfficientFormer (NeurIPs 2022) and EfficientFormerV2 (ICCV 2023):
 ```BibTeX
 @article{li2022efficientformer,
-  title={EfficientFormer: Vision Transformers at MobileNet Speed},
+  title={Efficientformer: Vision transformers at mobilenet speed},
   author={Li, Yanyu and Yuan, Geng and Wen, Yang and Hu, Ju and Evangelidis, Georgios and Tulyakov, Sergey and Wang, Yanzhi and Ren, Jian},
-  journal={arXiv preprint arXiv:2206.01191},
+  journal={Advances in Neural Information Processing Systems},
+  volume={35},
+  pages={12934--12949},
   year={2022}
 }
 ```
 ```BibTeX
-@article{li2022rethinking,
+@inproceedings{li2022rethinking,
   title={Rethinking Vision Transformers for MobileNet Size and Speed},
   author={Li, Yanyu and Hu, Ju and Wen, Yang and Evangelidis, Georgios and Salahi, Kamyar and Wang, Yanzhi and Tulyakov, Sergey and Ren, Jian},
-  journal={arXiv preprint arXiv:2212.08059},
-  year={2022}
+  booktitle={Proceedings of the IEEE international conference on computer vision},
+  year={2023}
 }
 ```
-
