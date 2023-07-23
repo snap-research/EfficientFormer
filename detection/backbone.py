@@ -8,9 +8,8 @@ from typing import Dict
 import itertools
 
 from timm.data import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
-from timm.models.layers import DropPath, trunc_normal_
+from timm.models.layers import DropPath, trunc_normal_, to_2tuple
 from timm.models.registry import register_model
-from timm.models.layers.helpers import to_2tuple
 
 try:
     from mmdet.models.builder import BACKBONES as det_BACKBONES
